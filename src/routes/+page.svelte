@@ -1,5 +1,5 @@
 <script lang="ts">
-	import marked from 'marked'; // Changed import
+	import { marked } from 'marked'; // Changed import
 
 	// Markdown action with typing
 	function markdown(node: HTMLElement, content: string) {
