@@ -1,6 +1,8 @@
 import { supabase } from '$lib/supabaseClient';
 
-export async function load() {
+export async function load(): Promise<{
+  notes: Array<{ id: string; title: string; content: string; created_at: string }>
+}> {
   const { data, error } = await supabase
     .from('notes')
     .select('*')
@@ -11,11 +13,10 @@ export async function load() {
     return { notes: [] };
   }
 
-  // Ensure content is treated as a string
-  const notes = data?.map(note => ({
+  const notes = (data ?? []).map(note => ({
     ...note,
-    content: String(note.content)
-  })) ?? [];
+    content: typeof note.content === 'string' ? note.content : String(note.content),
+  }));
 
   return { notes };
 }

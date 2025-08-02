@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { marked } from 'marked'; // Changed import
 
-	// Markdown action with typing
-	function markdown(node: HTMLElement, content: string) {
-		node.innerHTML = marked.parse(content);
+	function markdown(node: HTMLElement, content: unknown) {
+		node.innerHTML = marked.parse(typeof content === 'string' ? content : '');
 
 		return {
-			update(newContent: string) {
-				node.innerHTML = marked.parse(newContent);
+			update(newContent: unknown) {
+				node.innerHTML = marked.parse(typeof newContent === 'string' ? newContent : '');
 			}
 		};
 	}
