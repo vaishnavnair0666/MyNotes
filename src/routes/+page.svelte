@@ -19,7 +19,7 @@
 </script>
 
 <h1 class="mb-4 text-xl font-bold">All Notes</h1>
-
+<a href="/new" class="text-blue-500 underline">New Note</a>
 {#if notes.length === 0}
 	<p>No notes found.</p>
 {:else}
