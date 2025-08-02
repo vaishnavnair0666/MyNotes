@@ -31,6 +31,7 @@
 
 				<!-- Render Markdown content -->
 				<div class="prose mt-2 max-w-none" use:markdown={note.content}></div>
+				<a href={`/edit/${note.id}`} class="text-blue-500 underline">Edit</a>
 			</li>
 		{/each}
 	</ul>
